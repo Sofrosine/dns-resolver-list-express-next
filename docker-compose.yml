@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  coldsire_test_db:
+    image: postgres:16.3
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Ymail123
+      POSTGRES_DB: coldsire_test_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    restart: always
+    networks:
+      - coldsire-test-network
+
+  coldsire_test_server:
+    build: server
+    ports:
+      - "3000:3000"
+    depends_on:
+      - coldsire_test_db
+    env_file:
+      - server/.env
+    restart: always
+    networks:
+      - coldsire-test-network
+
+  coldsire_test_client:
+    build:
+      context: client
+      dockerfile: Dockerfile
+    ports:
+      - '3001:3000'
+    volumes:
+      - .:/app
+      - /app/node_modules
+    restart: always
+    networks:
+      - coldsire-test-network
+
+
+volumes:
+  db-data:
+
+networks:
+  coldsire-test-network:
+    driver: bridge

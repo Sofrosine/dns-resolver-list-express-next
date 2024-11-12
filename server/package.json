@@ -1,0 +1,20 @@
+{
+  "name": "server",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./app.js",
+    "migrate": "PGDATABASE=coldsire_test_db ./scripts/ensure-db-exists.sh"
+  },
+  "dependencies": {
+    "express": "5.0.0",
+    "pg": "^8.13.1",
+    "csv-parser": "^3.0.0",
+    "node-cron": "^3.0.3",
+    "dotenv": "^16.4.5",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}

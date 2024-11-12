@@ -33,7 +33,7 @@ const TableDns = () => {
     const fetchDomains = async () => {
         setLoading(true);
         try {
-            const res = await fetch(`http://localhost:3000/api/domains?page=1&limit=${limit}&domain=${debounceSearch}`);
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/domains?page=1&limit=${limit}&domain=${debounceSearch}`);
             const data: IDomainResponse = await res.json();
             setData(data)
         } catch (e) {

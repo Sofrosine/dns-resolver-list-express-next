@@ -28,6 +28,7 @@ const getConnection = async () => {
 // Create an async function for the routes setup
 const setupRoutes = async () => {
     const client = await getConnection(); // Await the connection
+    await importDomainsAndCheckRecords(client);
     // Run importDomainsAndCheckRecords every minute
     cron.schedule('*/5 * * * *', async () => {
         try {

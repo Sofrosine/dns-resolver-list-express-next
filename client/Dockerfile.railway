@@ -8,6 +8,12 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 3001
+ARG NEXT_PUBLIC_API_URL=https://server-production-3bdb.up.railway.app
+# Export ARG as ENV
+ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
 
-CMD ["npm", "run", "dev"]
+RUN npm run build
+
+EXPOSE 8080
+
+CMD ["npm", "run", "start"]

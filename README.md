@@ -2,6 +2,8 @@
 
 Welcome to the DNS Resolver project! This application is designed to provide streamlined server and client functionality using Docker for quick and easy setup.
 
+![img.png](img.png)
+
 ## Getting Started
 
 Follow these instructions to get the project up and running on your local machine.
@@ -68,3 +70,8 @@ Follow these instructions to get the project up and running on your local machin
 - **Backend**: Node.js, Express
 - **Frontend**: Next.js
 - **Database**: PostgreSQL (running inside a Docker container)
+
+---
+
+## NOTES
+If the database still empty after you running for the first time, you can re-run the docker compose

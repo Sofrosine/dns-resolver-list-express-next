@@ -3,10 +3,8 @@ version: '3.8'
 services:
   coldsire_test_db:
     image: postgres:16.3
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: Ymail123
-      POSTGRES_DB: coldsire_test_db
+    env_file:
+      - .env.db # Specify the path to the new .env file for the database
     ports:
       - "5432:5432"
     volumes:
